@@ -1,0 +1,10 @@
+
+//  __module_name__
+
+    $api->get('__singular_var__s', '__controller_class_name__@index');
+    $api->post('__singular_var__s', '__controller_class_name__@store');
+    $api->get('__singular_var__s/{id}', '__controller_class_name__@show');
+    $api->put('__singular_var__s/{id}', '__controller_class_name__@update');
+    $api->delete('__singular_var__s/{id}', '__controller_class_name__@destroy');
+
+});

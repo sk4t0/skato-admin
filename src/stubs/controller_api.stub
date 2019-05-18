@@ -1,0 +1,130 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: skato
+ */
+
+namespace App\Http\API\Controllers;
+
+use Dingo\Api\Routing\Helpers;
+use Illuminate\Http\Request;
+use App\Http\API\Controllers\Controller;
+
+use App\Models\__model_name__;
+use App\Transformers\__model_name__sTransformer;
+
+
+/**
+ * __model_name__s resource representation.
+ *
+ * @Resource("__model_name__s", uri="/__singular_var__s")
+ */
+class __controller_class_name__ extends Controller
+{
+    use Helpers;
+
+    /**
+     * Display a listing of the __model_name__s.
+     *
+     * Get a JSON representation of all the __model_name__s.
+     *
+     * @Get("")
+     * @Versions({"v1"})
+     * @Response(200, body={__response_cols__})
+     * @return \Dingo\Api\Http\Response
+     */
+    public function index()
+    {
+
+        $__singular_var__s = __model_name__::all();
+        return $this->response->collection($__singular_var__s, new __model_name__sTransformer);
+
+    }
+
+    /**
+     * Display the specified __model_name__.
+     *
+     * Get a JSON representation of the single __model_name__.
+     *
+     * @Get("/{id}")
+     * @Versions({"v1"})
+     * @Response(200, body={__response_cols__})
+     * @Parameters({
+     *      @Parameter("id", type="integer", required=true, description="The id for the __model_name__")
+     * })
+     *
+     * @param  int  $id
+     * @return \Dingo\Api\Http\Response
+     */
+    public function show($id)
+    {
+
+        $__singular_var__ = __model_name__::findOrFail($id);
+        return $this->response->item($__singular_var__, new __model_name__sTransformer);
+
+    }
+
+    /**
+     * Store a new __model_name__
+     *
+     * Register a new __model_name__ .
+     *
+     * @Post("")
+     * @Versions({"v1"})
+     * @Request({__request_cols__})
+     * @Response(200, body={__response_cols__})
+     *
+     * @param Request $request
+     * @return \Dingo\Api\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $__singular_var__ = __model_name__::create($request->all());
+        return $this->response->item($__singular_var__, new __model_name__sTransformer);
+    }
+
+    /**
+     * Update a __model_name__
+     *
+     * Update a __model_name__ .
+     *
+     * @Put("/{id}")
+     * @Versions({"v1"})
+     * @Request({__request_cols__})
+     * @Response(200, body={__response_cols__})
+     * @Parameters({
+     *      @Parameter("id", type="integer", required=true, description="The id for the __model_name__")
+     * })
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Dingo\Api\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $__singular_var__ = __model_name__::findOrFail($id)->update($request->all());
+        return $this->response->item($__singular_var__, new __model_name__sTransformer);
+    }
+
+    /**
+     * Destroy a __model_name__
+     *
+     * Destroy a single __model_name__. No content returned
+     *
+     * @Delete("/{id}")
+     * @Versions({"v1"})
+     * @Response(204)
+     * @Parameters({
+     *      @Parameter("id", type="integer", required=true, description="The id for the __model_name__")
+     * })
+     *
+     * @param $id
+     * @return \Dingo\Api\Http\Response
+     */
+    public function destroy($id)
+    {
+        $__singular_var__ = __model_name__::findOrFail($id)->delete();
+        return $this->response->noContent();
+    }
+
+}

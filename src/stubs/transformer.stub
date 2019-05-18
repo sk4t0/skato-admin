@@ -1,0 +1,20 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: skato
+ */
+namespace App\Transformers;
+
+use League\Fractal\TransformerAbstract;
+
+use App\Models\__model_name__;
+
+class __model_name__sTransformer extends TransformerAbstract
+{
+    public function transform(__model_name__ $__singular_var__)
+    {
+        return [
+            __transformer_cols__
+        ];
+    }
+}
