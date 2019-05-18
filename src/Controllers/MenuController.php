@@ -1,13 +1,13 @@
 <?php
 /**
- * Code generated using LaraAdmin
- * Help: http://laraadmin.com
- * LaraAdmin is open-sourced software licensed under the MIT license.
+ * Code generated using SkatoAdmin
+ * Help: http://skato-admin.com
+ * SkatoAdmin is open-sourced software licensed under the MIT license.
  * Developed by: Dwij IT Solutions
- * Developer Website: http://dwijitsolutions.com
+ * Developer Website: http://skatoitsolutions.com
  */
 
-namespace Dwij\Laraadmin\Controllers;
+namespace Skato\SkatoAdmin\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
@@ -15,15 +15,15 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use DB;
 
-use Dwij\Laraadmin\Models\Menu;
-use Dwij\Laraadmin\Models\Module;
-use Dwij\Laraadmin\Models\ModuleFields;
-use Dwij\Laraadmin\Models\ModuleFieldTypes;
-use Dwij\Laraadmin\Helpers\LAHelper;
+use Skato\SkatoAdmin\Models\Menu;
+use Skato\SkatoAdmin\Models\Module;
+use Skato\SkatoAdmin\Models\ModuleFields;
+use Skato\SkatoAdmin\Models\ModuleFieldTypes;
+use Skato\SkatoAdmin\Helpers\skHelper;
 
 /**
  * Class MenuController
- * @package Dwij\Laraadmin\Controllers
+ * @package Skato\SkatoAdmin\Controllers
  *
  * Works after managing Menus and their hierarchy
  */
@@ -46,7 +46,7 @@ class MenuController extends Controller
         // Send Menus with No Parent to Views
         $menuItems = Menu::where("parent", 0)->orderBy('hierarchy', 'asc')->get();
         
-        return View('la.menus.index', [
+        return View('sk.menus.index', [
             'menus' => $menuItems,
             'modules' => $modules
         ]);
@@ -91,7 +91,7 @@ class MenuController extends Controller
                 "status" => "success"
             ], 200);
         } else {
-            return redirect(config('laraadmin.adminRoute') . '/la_menus');
+            return redirect(config('skato-admin.adminRoute') . '/la_menus');
         }
     }
     
@@ -115,7 +115,7 @@ class MenuController extends Controller
         $menu->icon = $icon;
         $menu->save();
         
-        return redirect(config('laraadmin.adminRoute') . '/la_menus');
+        return redirect(config('skato-admin.adminRoute') . '/la_menus');
     }
     
     /**
@@ -129,7 +129,7 @@ class MenuController extends Controller
         Menu::find($id)->delete();
         
         // Redirecting to index() method for Listing
-        return redirect()->route(config('laraadmin.adminRoute') . '.la_menus.index');
+        return redirect()->route(config('skato-admin.adminRoute') . '.la_menus.index');
     }
     
     /**

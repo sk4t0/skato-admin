@@ -1,22 +1,22 @@
 <?php
 /**
- * Code generated using LaraAdmin
- * Help: http://laraadmin.com
- * LaraAdmin is open-sourced software licensed under the MIT license.
+ * Code generated using SkatoAdmin
+ * Help: http://skato-admin.com
+ * SkatoAdmin is open-sourced software licensed under the MIT license.
  * Developed by: Dwij IT Solutions
- * Developer Website: http://dwijitsolutions.com
+ * Developer Website: http://skatoitsolutions.com
  */
 
-namespace Dwij\Laraadmin\Models;
+namespace Skato\SkatoAdmin\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
-use Dwij\Laraadmin\Helpers\LAHelper;
+use Skato\SkatoAdmin\Helpers\skHelper;
 
 /**
  * Class Menu
- * @package Dwij\Laraadmin\Models
+ * @package Skato\SkatoAdmin\Models
  *
  * Menu Model which looks after Menus in Sidebar and Navbar
  */

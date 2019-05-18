@@ -1,7 +1,7 @@
 <?php
 /**
- * Model genrated using LaraAdmin
- * Help: http://laraadmin.com
+ * Model genrated using SkatoAdmin
+ * Help: http://skato-admin.com
  */
 
 namespace App\Models;

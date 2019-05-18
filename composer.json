@@ -1,14 +1,14 @@
  {
-    "name": "dwij/laraadmin",
-    "description": "LaraAdmin is a Open source Laravel Admin Panel / CMS which can be used as Admin Backend, Data Management Tool or CRM boilerplate for Laravel with features like CRUD Generation, Module Manager, Media, Menus, Backups and much more",
+    "name": "skato/skato-admin",
+    "description": "SkatoAdmin is a base admin panel which can be used as Admin Backend, Data Management Tool or CRM boilerplate for Laravel with features like CRUD Generation, Module Manager, Media, Menus, Backups and much more",
     "keywords": ["php", "laravel", "crm", "admin", "cms", "administrator"],
     "license": "MIT",
-    "homepage": "http://laraadmin.com",
+    "homepage": "",
     "support": {
-        "issues": "https://github.com/dwijitsolutions/laraadmin/issues",
-        "source": "https://github.com/dwijitsolutions/laraadmin"
+        "issues": "https://github.com/sk4t0/skato-admin/issues",
+        "source": "https://github.com/sk4t0/skato-admin"
     },
-    "version": "1.0.40",
+    "version": "1.0.1",
     "require": {
         "illuminate/support": "5.*",
         "laravelcollective/html": "^5.2|^5.1",
@@ -24,8 +24,8 @@
     },
     "authors": [
         {
-            "name": "Ganesh Bhosale",
-            "email": "ganesh@dwij.in"
+            "name": "Salvatore Nalbone",
+            "email": "salvatorenalbone.web@gmail.com"
         }
     ],
     "classmap": [
@@ -34,7 +34,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Dwij\\Laraadmin\\": "src/"
+            "Skato\\SkatoAdmin\\": "src/"
         },
         "files": [
         ]

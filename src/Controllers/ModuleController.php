@@ -1,30 +1,30 @@
 <?php
 /**
- * Code generated using LaraAdmin
- * Help: http://laraadmin.com
- * LaraAdmin is open-sourced software licensed under the MIT license.
+ * Code generated using SkatoAdmin
+ * Help: http://skato-admin.com
+ * SkatoAdmin is open-sourced software licensed under the MIT license.
  * Developed by: Dwij IT Solutions
- * Developer Website: http://dwijitsolutions.com
+ * Developer Website: http://skatoitsolutions.com
  */
 
-namespace Dwij\Laraadmin\Controllers;
+namespace Skato\SkatoAdmin\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use DB;
-use Dwij\Laraadmin\Helpers\LAHelper;
-use Dwij\Laraadmin\Models\Module;
-use Dwij\Laraadmin\Models\ModuleFields;
-use Dwij\Laraadmin\Models\ModuleFieldTypes;
-use Dwij\Laraadmin\CodeGenerator;
+use Skato\SkatoAdmin\Helpers\skHelper;
+use Skato\SkatoAdmin\Models\Module;
+use Skato\SkatoAdmin\Models\ModuleFields;
+use Skato\SkatoAdmin\Models\ModuleFieldTypes;
+use Skato\SkatoAdmin\CodeGenerator;
 use App\Role;
 use Schema;
-use Dwij\Laraadmin\Models\Menu;
+use Skato\SkatoAdmin\Models\Menu;
 
 /**
  * Class ModuleController
- * @package Dwij\Laraadmin\Controllers
+ * @package Skato\SkatoAdmin\Controllers
  *
  */
 class ModuleController extends Controller
@@ -44,9 +44,9 @@ class ModuleController extends Controller
     public function index()
     {
         $modules = Module::all();
-        $tables = LAHelper::getDBTables([]);
+        $tables = skHelper::getDBTables([]);
         
-        return View('la.modules.index', [
+        return View('sk.modules.index', [
             'modules' => $modules,
             'tables' => $tables
         ]);
@@ -62,7 +62,7 @@ class ModuleController extends Controller
     {
         $module_id = Module::generateBase($request->name, $request->icon);
         
-        return redirect()->route(config('laraadmin.adminRoute') . '.modules.show', [$module_id]);
+        return redirect()->route(config('skato-admin.adminRoute') . '.modules.show', [$module_id]);
     }
     
     /**
@@ -77,13 +77,13 @@ class ModuleController extends Controller
         $module = Module::find($id);
         $module = Module::get($module->name);
         
-        $tables = LAHelper::getDBTables([]);
-        $modules = LAHelper::getModuleNames([]);
+        $tables = skHelper::getDBTables([]);
+        $modules = skHelper::getModuleNames([]);
         
         // Get Module Access for all roles
         $roles = Module::getRoleAccess($id);
         
-        return view('la.modules.show', [
+        return view('sk.modules.show', [
             'no_header' => true,
             'no_padding' => "no-padding",
             'ftypes' => $ftypes,
@@ -136,10 +136,10 @@ class ModuleController extends Controller
         $module_fields = ModuleFields::where('module', $module->id)->delete();
         
         // Delete Resource Views directory
-        \File::deleteDirectory(resource_path('/views/la/' . $module->name_db));
+        \File::deleteDirectory(resource_path('/views/sk/' . $module->name_db));
         
         // Delete Controller
-        \File::delete(app_path('/Http/Controllers/LA/' . $module->name . 'Controller.php'));
+        \File::delete(app_path('/Http/Controllers/SK/' . $module->name . 'Controller.php'));
 
         // Delete API Controller
         \File::delete(app_path('/Http/API/v1/Controllers/' . $module->name . 'Controller.php'));
@@ -171,19 +171,19 @@ class ModuleController extends Controller
         }
         
         // Delete Admin Routes
-        if(LAHelper::laravel_ver() == 5.3) {
+        if(skHelper::laravel_ver() == 5.3) {
             $file_admin_routes = base_path("/routes/admin_routes.php");
         } else {
             $file_admin_routes = base_path("/app/Http/admin_routes.php");
         }
-        while(LAHelper::getLineWithString($file_admin_routes, "LA\\" . $module->name . "Controller") != -1) {
-            $line = LAHelper::getLineWithString($file_admin_routes, "LA\\" . $module->name . 'Controller');
+        while(skHelper::getLineWithString($file_admin_routes, "SK\\" . $module->name . "Controller") != -1) {
+            $line = skHelper::getLineWithString($file_admin_routes, "SK\\" . $module->name . 'Controller');
             $fileData = file_get_contents($file_admin_routes);
             $fileData = str_replace($line, "", $fileData);
             file_put_contents($file_admin_routes, $fileData);
         }
-        if(LAHelper::getLineWithString($file_admin_routes, "=== " . $module->name . " ===") != -1) {
-            $line = LAHelper::getLineWithString($file_admin_routes, "=== " . $module->name . " ===");
+        if(skHelper::getLineWithString($file_admin_routes, "=== " . $module->name . " ===") != -1) {
+            $line = skHelper::getLineWithString($file_admin_routes, "=== " . $module->name . " ===");
             $fileData = file_get_contents($file_admin_routes);
             $fileData = str_replace($line, "", $fileData);
             file_put_contents($file_admin_routes, $fileData);
@@ -193,14 +193,14 @@ class ModuleController extends Controller
 
         $file_api_routes = base_path("/app/Http/API/v1/api_routes.php");
 
-        while(LAHelper::getLineWithString($file_api_routes, $module->name . "Controller") != -1) {
-            $line = LAHelper::getLineWithString($file_api_routes,  $module->name . 'Controller');
+        while(skHelper::getLineWithString($file_api_routes, $module->name . "Controller") != -1) {
+            $line = skHelper::getLineWithString($file_api_routes,  $module->name . 'Controller');
             $fileData = file_get_contents($file_api_routes);
             $fileData = str_replace($line, "", $fileData);
             file_put_contents($file_api_routes, $fileData);
         }
-        if(LAHelper::getLineWithString($file_api_routes, "//  " . $module->name) != -1) {
-            $line = LAHelper::getLineWithString($file_api_routes, "//  " . $module->name);
+        if(skHelper::getLineWithString($file_api_routes, "//  " . $module->name) != -1) {
+            $line = skHelper::getLineWithString($file_api_routes, "//  " . $module->name);
             $fileData = file_get_contents($file_api_routes);
             $fileData = str_replace($line, "", $fileData);
             file_put_contents($file_api_routes, $fileData);
@@ -215,7 +215,7 @@ class ModuleController extends Controller
         $module->delete();
         
         $modules = Module::all();
-        return redirect()->route(config('laraadmin.adminRoute') . '.modules.index', ['modules' => $modules]);
+        return redirect()->route(config('skato-admin.adminRoute') . '.modules.index', ['modules' => $modules]);
     }
     
     /**
@@ -352,7 +352,7 @@ class ModuleController extends Controller
         $module->view_col = $column_name;
         $module->save();
         
-        return redirect()->route(config('laraadmin.adminRoute') . '.modules.show', [$module_id]);
+        return redirect()->route(config('skato-admin.adminRoute') . '.modules.show', [$module_id]);
     }
     
     /**
@@ -367,8 +367,8 @@ class ModuleController extends Controller
         $module = Module::find($id);
         $module = Module::get($module->name);
         
-        $tables = LAHelper::getDBTables([]);
-        $modules = LAHelper::getModuleNames([]);
+        $tables = skHelper::getDBTables([]);
+        $modules = skHelper::getModuleNames([]);
         $roles = Role::all();
         
         $now = date("Y-m-d H:i:s");
@@ -433,7 +433,7 @@ class ModuleController extends Controller
                 }
             }
         }
-        return redirect(config('laraadmin.adminRoute') . '/modules/' . $id . "#access");
+        return redirect(config('skato-admin.adminRoute') . '/modules/' . $id . "#access");
     }
     
     /**
@@ -457,7 +457,7 @@ class ModuleController extends Controller
     }
     
     /**
-     * Get Array of all Module Files generated by LaraAdmin
+     * Get Array of all Module Files generated by SkatoAdmin
      *
      * @param Request $request
      * @param $module_id Module ID
@@ -468,14 +468,14 @@ class ModuleController extends Controller
         $module = Module::find($module_id);
         
         $arr = array();
-        $arr[] = "app/Http/Controllers/LA/" . $module->controller . ".php";
+        $arr[] = "app/Http/Controllers/SK/" . $module->controller . ".php";
         $arr[] = "app/Http/API/v1/Controllers/" . $module->controller . ".php";
         $arr[] = "app/Http/API/v1/Transformers/" . $module->model . "sTransformer.php";
         $arr[] = "app/Models/" . $module->model . ".php";
-        $views = scandir(resource_path('views/la/' . $module->name_db));
+        $views = scandir(resource_path('views/sk/' . $module->name_db));
         foreach($views as $view) {
             if($view != "." && $view != "..") {
-                $arr[] = "resources/views/la/" . $view;
+                $arr[] = "resources/views/sk/" . $view;
             }
         }
         // Find existing migration file

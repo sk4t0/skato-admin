@@ -1,4 +1,4 @@
-@extends('la.layouts.app')
+@extends('sk.layouts.app')
 
 @section('htmlheader_title')
     __singular_cap_var__ View
@@ -11,7 +11,7 @@
         <div class="col-md-4">
             <div class="row">
                 <div class="col-md-3">
-                    <!--<img class="profile-image" src="{{ asset('la-assets/img/avatar5.png') }}" alt="">-->
+                    <!--<img class="profile-image" src="{{ asset('sk-assets/img/avatar5.png') }}" alt="">-->
                     <div class="profile-icon text-primary"><i class="fa {{ $module->fa_icon }}"></i></div>
                 </div>
                 <div class="col-md-9">
@@ -33,17 +33,17 @@
         <div class="col-md-4">
             <!--
             <div class="teamview">
-                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user1-128x128.jpg') }}" alt=""><i class="status-online"></i></a>
-                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user2-160x160.jpg') }}" alt=""></a>
-                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user3-128x128.jpg') }}" alt=""></a>
-                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user4-128x128.jpg') }}" alt=""><i class="status-online"></i></a>
-                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user5-128x128.jpg') }}" alt=""></a>
-                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user6-128x128.jpg') }}" alt=""></a>
-                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user7-128x128.jpg') }}" alt=""></a>
-                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user8-128x128.jpg') }}" alt=""></a>
-                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user5-128x128.jpg') }}" alt=""></a>
-                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user6-128x128.jpg') }}" alt=""><i class="status-online"></i></a>
-                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('la-assets/img/user7-128x128.jpg') }}" alt=""></a>
+                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('sk-assets/img/user1-128x128.jpg') }}" alt=""><i class="status-online"></i></a>
+                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('sk-assets/img/user2-160x160.jpg') }}" alt=""></a>
+                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('sk-assets/img/user3-128x128.jpg') }}" alt=""></a>
+                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('sk-assets/img/user4-128x128.jpg') }}" alt=""><i class="status-online"></i></a>
+                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('sk-assets/img/user5-128x128.jpg') }}" alt=""></a>
+                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('sk-assets/img/user6-128x128.jpg') }}" alt=""></a>
+                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('sk-assets/img/user7-128x128.jpg') }}" alt=""></a>
+                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('sk-assets/img/user8-128x128.jpg') }}" alt=""></a>
+                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('sk-assets/img/user5-128x128.jpg') }}" alt=""></a>
+                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('sk-assets/img/user6-128x128.jpg') }}" alt=""><i class="status-online"></i></a>
+                <a class="face" data-toggle="tooltip" data-placement="top" title="John Doe"><img src="{{ asset('sk-assets/img/user7-128x128.jpg') }}" alt=""></a>
             </div>
             -->
             <div class="dats1 pb">
@@ -82,11 +82,11 @@
         </div>
         <div class="col-md-1 actions">
             @la_access("__module_name__", "edit")
-                <a href="{{ url(config('laraadmin.adminRoute') . '/__db_table_name__/'.$__singular_var__->id.'/edit') }}" class="btn btn-xs btn-edit btn-default"><i class="fa fa-pencil"></i></a><br>
+                <a href="{{ url(config('skato-admin.adminRoute') . '/__db_table_name__/'.$__singular_var__->id.'/edit') }}" class="btn btn-xs btn-edit btn-default"><i class="fa fa-pencil"></i></a><br>
             @endla_access
             
             @la_access("__module_name__", "delete")
-                {{ Form::open(['route' => [config('laraadmin.adminRoute') . '.__db_table_name__.destroy', $__singular_var__->id], 'method' => 'delete', 'style'=>'display:inline']) }}
+                {{ Form::open(['route' => [config('skato-admin.adminRoute') . '.__db_table_name__.destroy', $__singular_var__->id], 'method' => 'delete', 'style'=>'display:inline']) }}
                     <button class="btn btn-default btn-delete btn-xs" type="submit"><i class="fa fa-times"></i></button>
                 {{ Form::close() }}
             @endla_access
@@ -94,7 +94,7 @@
     </div>
 
     <ul data-toggle="ajax-tab" class="nav nav-tabs profile" role="tablist">
-        <li class=""><a href="{{ url(config('laraadmin.adminRoute') . '/__db_table_name__') }}" data-toggle="tooltip" data-placement="right" title="Back to __module_name_2__"><i class="fa fa-chevron-left"></i></a></li>
+        <li class=""><a href="{{ url(config('skato-admin.adminRoute') . '/__db_table_name__') }}" data-toggle="tooltip" data-placement="right" title="Back to __module_name_2__"><i class="fa fa-chevron-left"></i></a></li>
         <li class="active"><a role="tab" data-toggle="tab" class="active" href="#tab-general-info" data-target="#tab-info"><i class="fa fa-bars"></i> General Info</a></li>
         <li class=""><a role="tab" data-toggle="tab" href="#tab-timeline" data-target="#tab-timeline"><i class="fa fa-clock-o"></i> Timeline</a></li>
     </ul>

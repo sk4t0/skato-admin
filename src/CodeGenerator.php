@@ -1,24 +1,24 @@
 <?php
 /**
- * Code generated using LaraAdmin
- * Help: http://laraadmin.com
- * LaraAdmin is open-sourced software licensed under the MIT license.
+ * Code generated using SkatoAdmin
+ * Help: http://skato-admin.com
+ * SkatoAdmin is open-sourced software licensed under the MIT license.
  * Developed by: Dwij IT Solutions
- * Developer Website: http://dwijitsolutions.com
+ * Developer Website: http://skatoitsolutions.com
  */
 
-namespace Dwij\Laraadmin;
+namespace Skato\SkatoAdmin;
 
 use Exception;
 use Illuminate\Filesystem\Filesystem;
-use Dwij\Laraadmin\Models\Module;
-use Dwij\Laraadmin\Models\ModuleFieldTypes;
-use Dwij\Laraadmin\Helpers\LAHelper;
-use Dwij\Laraadmin\Models\Menu;
+use Skato\SkatoAdmin\Models\Module;
+use Skato\SkatoAdmin\Models\ModuleFieldTypes;
+use Skato\SkatoAdmin\Helpers\skHelper;
+use Skato\SkatoAdmin\Models\Menu;
 
 /**
  * Class CodeGenerator
- * @package Dwij\Laraadmin
+ * @package Skato\SkatoAdmin
  *
  * This class performs the Code Generation for Controller, Model, CRUDs Views, Routes, Menu and Migrations.
  * This also generates the naming config which contains names for controllers, tables and everything required
@@ -37,7 +37,7 @@ class CodeGenerator
         
         $templateDirectory = __DIR__ . '/stubs';
         
-        LAHelper::log("info", "Creating controller...", $comm);
+        skHelper::log("info", "Creating controller...", $comm);
         $md = file_get_contents($templateDirectory . "/controller.stub");
         
         $md = str_replace("__controller_class_name__", $config->controllerName, $md);
@@ -67,9 +67,9 @@ class CodeGenerator
         $md = str_replace("__db_table_name__", $config->dbTableName, $md);
         $md = str_replace("__singular_var__", $config->singularVar, $md);
         
-        file_put_contents(base_path('app/Http/Controllers/LA/' . $config->controllerName . ".php"), $md);
+        file_put_contents(base_path('app/Http/Controllers/SK/' . $config->controllerName . ".php"), $md);
 
-        LAHelper::log("info", "Creating API controller...", $comm);
+        skHelper::log("info", "Creating API controller...", $comm);
         $apimd = file_get_contents($templateDirectory . "/controller_api.stub");
 
         $apimd = str_replace("__controller_class_name__", $config->controllerName, $apimd);
@@ -81,7 +81,7 @@ class CodeGenerator
 
         file_put_contents(base_path('app/Http/API/v1/Controllers/' . $config->controllerName . ".php"), $apimd);
 
-        LAHelper::log("info", "Creating Transformer...", $comm);
+        skHelper::log("info", "Creating Transformer...", $comm);
         $trmd = file_get_contents($templateDirectory . "/transformer.stub");
 
         $trmd = str_replace("__model_name__", $config->modelName, $trmd);
@@ -103,7 +103,7 @@ class CodeGenerator
         
         $templateDirectory = __DIR__ . '/stubs';
         
-        LAHelper::log("info", "Creating model...", $comm);
+        skHelper::log("info", "Creating model...", $comm);
         $md = file_get_contents($templateDirectory . "/model.stub");
         
         $md = str_replace("__model_class_name__", $config->modelName, $md);
@@ -131,9 +131,9 @@ class CodeGenerator
         
         $templateDirectory = __DIR__ . '/stubs';
         
-        LAHelper::log("info", "Creating views...", $comm);
+        skHelper::log("info", "Creating views...", $comm);
         // Create Folder
-        @mkdir(base_path("resources/views/la/" . $config->dbTableName), 0777, true);
+        @mkdir(base_path("resources/views/sk/" . $config->dbTableName), 0777, true);
         
         // ============================ Listing / Index ============================
         $md = file_get_contents($templateDirectory . "/views/index.blade.stub");
@@ -153,7 +153,7 @@ class CodeGenerator
         $inputFields = trim($inputFields);
         $md = str_replace("__input_fields__", $inputFields, $md);
         
-        file_put_contents(base_path('resources/views/la/' . $config->dbTableName . '/index.blade.php'), $md);
+        file_put_contents(base_path('resources/views/sk/' . $config->dbTableName . '/index.blade.php'), $md);
         
         // ============================ Edit ============================
         $md = file_get_contents($templateDirectory . "/views/edit.blade.stub");
@@ -173,7 +173,7 @@ class CodeGenerator
         $inputFields = trim($inputFields);
         $md = str_replace("__input_fields__", $inputFields, $md);
         
-        file_put_contents(base_path('resources/views/la/' . $config->dbTableName . '/edit.blade.php'), $md);
+        file_put_contents(base_path('resources/views/sk/' . $config->dbTableName . '/edit.blade.php'), $md);
         
         // ============================ Show ============================
         $md = file_get_contents($templateDirectory . "/views/show.blade.stub");
@@ -192,7 +192,7 @@ class CodeGenerator
         $displayFields = trim($displayFields);
         $md = str_replace("__display_fields__", $displayFields, $md);
         
-        file_put_contents(base_path('resources/views/la/' . $config->dbTableName . '/show.blade.php'), $md);
+        file_put_contents(base_path('resources/views/sk/' . $config->dbTableName . '/show.blade.php'), $md);
     }
     
     /**
@@ -206,8 +206,8 @@ class CodeGenerator
         
         $templateDirectory = __DIR__ . '/stubs';
         
-        LAHelper::log("info", "Appending routes...", $comm);
-        if(\Dwij\Laraadmin\Helpers\LAHelper::laravel_ver() == 5.3) {
+        skHelper::log("info", "Appending routes...", $comm);
+        if(\Skato\SkatoAdmin\Helpers\skHelper::laravel_ver() == 5.3) {
             $routesFile = base_path('routes/admin_routes.php');
         } else {
             $routesFile = app_path('Http/admin_routes.php');
@@ -228,7 +228,7 @@ class CodeGenerator
         file_put_contents($routesFile, $md, FILE_APPEND);
 
 
-        LAHelper::log("info", "Appending api routes...", $comm);
+        skHelper::log("info", "Appending api routes...", $comm);
             $routesFileApi = app_path('Http/API/v1/api_routes.php');
 
         $contents = file_get_contents($routesFileApi);
@@ -255,7 +255,7 @@ class CodeGenerator
         
         // $templateDirectory = __DIR__.'/stubs';
         
-        LAHelper::log("info", "Appending Menu...", $comm);
+        skHelper::log("info", "Appending Menu...", $comm);
         if(Menu::where("url", $config->dbTableName)->count() == 0) {
             Menu::create([
                 "name" => $config->moduleName,
@@ -267,10 +267,10 @@ class CodeGenerator
         }
         
         // Old Method to add Menu
-        // $menu = '<li><a href="{{ url(config("laraadmin.adminRoute") . '."'".'/'.$config->dbTableName."'".') }}"><i class="fa fa-cube"></i> <span>'.$config->moduleName.'</span></a></li>'."\n".'            <!-- LAMenus -->';
-        // $md = file_get_contents(base_path('resources/views/la/layouts/partials/sidebar.blade.php'));
+        // $menu = '<li><a href="{{ url(config("skato-admin.adminRoute") . '."'".'/'.$config->dbTableName."'".') }}"><i class="fa fa-cube"></i> <span>'.$config->moduleName.'</span></a></li>'."\n".'            <!-- LAMenus -->';
+        // $md = file_get_contents(base_path('resources/views/sk/layouts/partials/sidebar.blade.php'));
         // $md = str_replace("<!-- LAMenus -->", $menu, $md);
-        // file_put_contents(base_path('resources/views/la/layouts/partials/sidebar.blade.php'), $md);
+        // file_put_contents(base_path('resources/views/sk/layouts/partials/sidebar.blade.php'), $md);
     }
     
     /**
@@ -301,10 +301,10 @@ class CodeGenerator
         $dbTableName = $tableP;
         $moduleName = ucfirst(str_plural($table));
         
-        LAHelper::log("info", "Model:\t   " . $modelName, $comm);
-        LAHelper::log("info", "Module:\t   " . $moduleName, $comm);
-        LAHelper::log("info", "Table:\t   " . $dbTableName, $comm);
-        LAHelper::log("info", "Migration: " . $migrationName . "\n", $comm);
+        skHelper::log("info", "Model:\t   " . $modelName, $comm);
+        skHelper::log("info", "Module:\t   " . $moduleName, $comm);
+        skHelper::log("info", "Table:\t   " . $dbTableName, $comm);
+        skHelper::log("info", "Migration: " . $migrationName . "\n", $comm);
         
         // Reverse migration generation from table
         $generateData = "";
@@ -317,7 +317,7 @@ class CodeGenerator
             // check if table, module and module fields exists
             $module = Module::get($moduleName);
             if(isset($module)) {
-                LAHelper::log("info", "Module exists :\t   " . $moduleName, $comm);
+                skHelper::log("info", "Module exists :\t   " . $moduleName, $comm);
                 
                 $viewColumnName = $module->view_col;
                 $faIcon = $module->fa_icon;
@@ -390,7 +390,7 @@ class CodeGenerator
                     }
                 }
                 if($fileExists) {
-                    LAHelper::log("info", "Replacing old migration file: " . $fileExistName, $comm);
+                    skHelper::log("info", "Replacing old migration file: " . $fileExistName, $comm);
                     $migrationFileName = $fileExistName;
                 } else {
                     // If migration not exists in migrations table
@@ -402,14 +402,14 @@ class CodeGenerator
                     }
                 }
             } else {
-                LAHelper::log("error", "Module " . $moduleName . " doesn't exists; Cannot generate !!!", $comm);
+                skHelper::log("error", "Module " . $moduleName . " doesn't exists; Cannot generate !!!", $comm);
             }
         }
         
         $templateDirectory = __DIR__ . '/stubs';
         
         try {
-            LAHelper::log("line", "Creating migration...", $comm);
+            skHelper::log("line", "Creating migration...", $comm);
             $migrationData = file_get_contents($templateDirectory . "/migration.stub");
             
             $migrationData = str_replace("__migration_class_name__", $migrationClassName, $migrationData);
@@ -428,7 +428,7 @@ class CodeGenerator
         } catch(Exception $e) {
             throw new Exception("Unable to generate migration for " . $table . " : " . $e->getMessage(), 1);
         }
-        LAHelper::log("info", "Migration done: " . $migrationFileName . "\n", $comm);
+        skHelper::log("info", "Migration done: " . $migrationFileName . "\n", $comm);
     }
     
     /**

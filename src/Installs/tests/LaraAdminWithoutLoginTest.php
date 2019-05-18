@@ -1,17 +1,17 @@
 <?php
 /**
- * Code generated using LaraAdmin
- * Help: http://laraadmin.com
- * LaraAdmin is open-sourced software licensed under the MIT license.
+ * Code generated using SkatoAdmin
+ * Help: http://skato-admin.com
+ * SkatoAdmin is open-sourced software licensed under the MIT license.
  * Developed by: Dwij IT Solutions
- * Developer Website: http://dwijitsolutions.com
+ * Developer Website: http://skatoitsolutions.com
  */
 
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class LaraAdminWithoutLoginTest extends TestCase
+class SkatoAdminWithoutLoginTest extends TestCase
 {
 	use DatabaseMigrations;
 
@@ -35,7 +35,7 @@ class LaraAdminWithoutLoginTest extends TestCase
     public function testExample()
     {
 		$this->visit('/')
-             ->see('LaraAdmin');
+             ->see('SkatoAdmin');
     }
 
 	/**

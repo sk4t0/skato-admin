@@ -1,13 +1,13 @@
 <?php
 /**
- * Code generated using LaraAdmin
- * Help: http://laraadmin.com
- * LaraAdmin is open-sourced software licensed under the MIT license.
+ * Code generated using SkatoAdmin
+ * Help: http://skato-admin.com
+ * SkatoAdmin is open-sourced software licensed under the MIT license.
  * Developed by: Dwij IT Solutions
- * Developer Website: http://dwijitsolutions.com
+ * Developer Website: http://skatoitsolutions.com
  */
 
-namespace Dwij\Laraadmin\Controllers;
+namespace Skato\SkatoAdmin\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,14 +15,14 @@ use App\Http\Requests;
 use DB;
 use Schema;
 
-use Dwij\Laraadmin\Models\Module;
-use Dwij\Laraadmin\Models\ModuleFields;
-use Dwij\Laraadmin\Models\ModuleFieldTypes;
-use Dwij\Laraadmin\Helpers\LAHelper;
+use Skato\SkatoAdmin\Models\Module;
+use Skato\SkatoAdmin\Models\ModuleFields;
+use Skato\SkatoAdmin\Models\ModuleFieldTypes;
+use Skato\SkatoAdmin\Helpers\skHelper;
 
 /**
  * Class FieldController
- * @package Dwij\Laraadmin\Controllers
+ * @package Skato\SkatoAdmin\Controllers
  *
  * Controller looks after
  */
@@ -45,7 +45,7 @@ class FieldController extends Controller
         $role = \App\Role::where("name", "SUPER_ADMIN")->first();
         Module::setDefaultFieldRoleAccess($field_id, $role->id, "full");
         
-        return redirect()->route(config('laraadmin.adminRoute') . '.modules.show', [$module_id]);
+        return redirect()->route(config('skato-admin.adminRoute') . '.modules.show', [$module_id]);
     }
     
     /**
@@ -61,9 +61,9 @@ class FieldController extends Controller
         $module = Module::find($field->module);
         $ftypes = ModuleFieldTypes::getFTypes2();
         
-        $tables = LAHelper::getDBTables([]);
+        $tables = skHelper::getDBTables([]);
         
-        return view('la.modules.field_edit', [
+        return view('sk.modules.field_edit', [
             'module' => $module,
             'ftypes' => $ftypes,
             'tables' => $tables
@@ -83,7 +83,7 @@ class FieldController extends Controller
         
         ModuleFields::updateField($id, $request);
         
-        return redirect()->route(config('laraadmin.adminRoute') . '.modules.show', [$module_id]);
+        return redirect()->route(config('skato-admin.adminRoute') . '.modules.show', [$module_id]);
     }
     
     /**
@@ -105,7 +105,7 @@ class FieldController extends Controller
         
         // Delete Context
         $field->delete();
-        return redirect()->route(config('laraadmin.adminRoute') . '.modules.show', [$module->id]);
+        return redirect()->route(config('skato-admin.adminRoute') . '.modules.show', [$module->id]);
     }
     
     /**

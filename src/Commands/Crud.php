@@ -1,25 +1,25 @@
 <?php
 /**
- * Code generated using LaraAdmin
- * Help: http://laraadmin.com
- * LaraAdmin is open-sourced software licensed under the MIT license.
+ * Code generated using SkatoAdmin
+ * Help: http://skato-admin.com
+ * SkatoAdmin is open-sourced software licensed under the MIT license.
  * Developed by: Dwij IT Solutions
- * Developer Website: http://dwijitsolutions.com
+ * Developer Website: http://skatoitsolutions.com
  */
 
-namespace Dwij\Laraadmin\Commands;
+namespace Skato\SkatoAdmin\Commands;
 
 use Config;
 use Artisan;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Dwij\Laraadmin\Models\Module;
-use Dwij\Laraadmin\CodeGenerator;
+use Skato\SkatoAdmin\Models\Module;
+use Skato\SkatoAdmin\CodeGenerator;
 
 /**
  * Class Crud
- * @package Dwij\Laraadmin\Commands
+ * @package Skato\SkatoAdmin\Commands
  *
  * Command that generates CRUD's for a Module. Takes Module name as input.
  */
@@ -35,7 +35,7 @@ class Crud extends Command
     var $singularCapitalVar = "";
     
     // The command signature.
-    protected $signature = 'la:crud {module}';
+    protected $signature = 'skato:crud {module}';
     
     // The command description.
     protected $description = 'Generate CRUD\'s, Controller, Model, Routes and Menu for given Module.';

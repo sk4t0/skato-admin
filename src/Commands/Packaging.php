@@ -1,24 +1,24 @@
 <?php
 /**
- * Code generated using LaraAdmin
- * Help: http://laraadmin.com
- * LaraAdmin is open-sourced software licensed under the MIT license.
+ * Code generated using SkatoAdmin
+ * Help: http://skato-admin.com
+ * SkatoAdmin is open-sourced software licensed under the MIT license.
  * Developed by: Dwij IT Solutions
- * Developer Website: http://dwijitsolutions.com
+ * Developer Website: http://skatoitsolutions.com
  */
 
-namespace Dwij\Laraadmin\Commands;
+namespace Skato\SkatoAdmin\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use Dwij\Laraadmin\Helpers\LAHelper;
+use Skato\SkatoAdmin\Helpers\skHelper;
 
 /**
  * Class Packaging
- * @package Dwij\Laraadmin\Commands
+ * @package Skato\SkatoAdmin\Commands
  *
- * Command to put latest development and changes of project into LaraAdmin package.
- * [For LaraAdmin Developer's Only]
+ * Command to put latest development and changes of project into SkatoAdmin package.
+ * [For SkatoAdmin Developer's Only]
  */
 class Packaging extends Command
 {
@@ -26,10 +26,10 @@ class Packaging extends Command
     var $modelsInstalled = ["User", "Role", "Permission", "Employee", "Department", "Upload", "Organization", "Backup"];
     
     // The command description.
-    protected $signature = 'la:packaging';
+    protected $signature = 'sk:packaging';
     
     // Copy From Folder - Package Install Files
-    protected $description = '[Developer Only] - Copy LaraAdmin-Dev files to package: "dwij/laraadmin"';
+    protected $description = '[Developer Only] - Copy SkatoAdmin-Dev files to package: "skato/skato-admin"';
     
     // Copy to Folder - Project Folder
     protected $from;
@@ -38,7 +38,7 @@ class Packaging extends Command
     protected $to;
     
     /**
-     * Copy Project changes into LaraAdmin package.
+     * Copy Project changes into SkatoAdmin package.
      *
      * @return mixed
      */
@@ -47,14 +47,14 @@ class Packaging extends Command
         $this->info('Exporting started...');
         
         $from = base_path();
-        $to = base_path('vendor/dwij/laraadmin/src/Installs');
+        $to = base_path('vendor/skato/skato-admin/src/Installs');
         
         $this->info('from: ' . $from . " to: " . $to);
         
         // Controllers
         $this->line('Exporting Controllers...');
         $this->replaceFolder($from . "/app/Http/Controllers/Auth", $to . "/app/Controllers/Auth");
-        $this->replaceFolder($from . "/app/Http/Controllers/LA", $to . "/app/Controllers/LA");
+        $this->replaceFolder($from . "/app/Http/Controllers/SK", $to . "/app/Controllers/SK");
         $this->copyFile($from . "/app/Http/Controllers/Controller.php", $to . "/app/Controllers/Controller.php");
         $this->copyFile($from . "/app/Http/Controllers/HomeController.php", $to . "/app/Controllers/HomeController.php");
         
@@ -71,7 +71,7 @@ class Packaging extends Command
         
         // Routes
         $this->line('Exporting Routes...');
-        if(LAHelper::laravel_ver() == 5.3) {
+        if(skHelper::laravel_ver() == 5.3) {
             // $this->copyFile($from."/routes/web.php", $to."/app/routes.php"); // Not needed anymore
             $this->copyFile($from . "/routes/admin_routes.php", $to . "/app/admin_routes.php");
         } else {
@@ -85,11 +85,11 @@ class Packaging extends Command
         
         // Config
         $this->line('Exporting Config...');
-        $this->copyFile($from . "/config/laraadmin.php", $to . "/config/laraadmin.php");
+        $this->copyFile($from . "/config/skato-admin.php", $to . "/config/skato-admin.php");
         
-        // la-assets
-        $this->line('Exporting LaraAdmin Assets...');
-        $this->replaceFolder($from . "/public/la-assets", $to . "/la-assets");
+        // sk-assets
+        $this->line('Exporting SkatoAdmin Assets...');
+        $this->replaceFolder($from . "/public/sk-assets", $to . "/sk-assets");
         // Use "git config core.fileMode false" for ignoring file permissions
         
         // migrations
@@ -120,9 +120,9 @@ class Packaging extends Command
     {
         $this->info("replaceFolder: ($from, $to)");
         if(file_exists($to)) {
-            LAHelper::recurse_delete($to);
+            skHelper::recurse_delete($to);
         }
-        LAHelper::recurse_copy($from, $to);
+        skHelper::recurse_copy($from, $to);
     }
     
     /**
@@ -134,7 +134,7 @@ class Packaging extends Command
     private function copyFile($from, $to)
     {
         $this->info("copyFile: ($from, $to)");
-        //LAHelper::recurse_copy($from, $to);
+        //skHelper::recurse_copy($from, $to);
         if(!file_exists(dirname($to))) {
             $this->info("mkdir: (" . dirname($to) . ")");
             mkdir(dirname($to));

@@ -2,11 +2,11 @@
 
 use Illuminate\Database\Seeder;
 
-use Dwij\Laraadmin\Models\Module;
-use Dwij\Laraadmin\Models\ModuleFields;
-use Dwij\Laraadmin\Models\ModuleFieldTypes;
-use Dwij\Laraadmin\Models\Menu;
-use Dwij\Laraadmin\Models\LAConfigs;
+use Skato\SkatoAdmin\Models\Module;
+use Skato\SkatoAdmin\Models\ModuleFields;
+use Skato\SkatoAdmin\Models\ModuleFieldTypes;
+use Skato\SkatoAdmin\Models\Menu;
+use Skato\SkatoAdmin\Models\SKConfigs;
 
 use App\Role;
 use App\Permission;
@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        /* ================ LaraAdmin Seeder Code ================ */
+        /* ================ SkatoAdmin Seeder Code ================ */
 
         // Generating Module Menus
         $modules = Module::all();
@@ -91,74 +91,74 @@ class DatabaseSeeder extends Seeder
             $role->attachPermission($perm);
         }
 
-        // Generate LaraAdmin Default Configurations
+        // Generate SkatoAdmin Default Configurations
 
-        $laconfig = LAConfigs::firstOrNew(["key" => "sitename"]);
+        $laconfig = SKConfigs::firstOrNew(["key" => "sitename"]);
         $laconfig->value = "AdminBase 1.0";
         if ($laconfig->id == null) {
             $laconfig->save();
         }
 
-        $laconfig = LAConfigs::firstOrNew(["key" => "sitename_part1"]);
+        $laconfig = SKConfigs::firstOrNew(["key" => "sitename_part1"]);
         $laconfig->value = "Admin";
         if ($laconfig->id == null) {
             $laconfig->save();
         }
-        $laconfig = LAConfigs::firstOrNew(["key" => "sitename_part2"]);
+        $laconfig = SKConfigs::firstOrNew(["key" => "sitename_part2"]);
         $laconfig->value = "Base 1.0";
         if ($laconfig->id == null) {
             $laconfig->save();
         }
-        $laconfig = LAConfigs::firstOrNew(["key" => "sitename_short"]);
+        $laconfig = SKConfigs::firstOrNew(["key" => "sitename_short"]);
         $laconfig->value = "AB";
         if ($laconfig->id == null) {
             $laconfig->save();
         }
-        $laconfig = LAConfigs::firstOrNew(["key" => "site_description"]);
+        $laconfig = SKConfigs::firstOrNew(["key" => "site_description"]);
         $laconfig->value = "Admin Base is a base solution to have a working base admin panel with integrated CRUD booth for API and WebApp, automatic API documentation";
         if ($laconfig->id == null) {
             $laconfig->save();
         }
         // Display Configurations
 
-        $laconfig = LAConfigs::firstOrNew(["key" => "sidebar_search"]);
+        $laconfig = SKConfigs::firstOrNew(["key" => "sidebar_search"]);
         $laconfig->value = "1";
         if ($laconfig->id == null) {
             $laconfig->save();
         }
-        $laconfig = LAConfigs::firstOrNew(["key" => "show_messages"]);
+        $laconfig = SKConfigs::firstOrNew(["key" => "show_messages"]);
         $laconfig->value = "1";
         if ($laconfig->id == null) {
             $laconfig->save();
         }
-        $laconfig = LAConfigs::firstOrNew(["key" => "show_notifications"]);
+        $laconfig = SKConfigs::firstOrNew(["key" => "show_notifications"]);
         $laconfig->value = "1";
         if ($laconfig->id == null) {
             $laconfig->save();
         }
-        $laconfig = LAConfigs::firstOrNew(["key" => "show_tasks"]);
+        $laconfig = SKConfigs::firstOrNew(["key" => "show_tasks"]);
         $laconfig->value = "1";
         if ($laconfig->id == null) {
             $laconfig->save();
         }
-        $laconfig = LAConfigs::firstOrNew(["key" => "show_rightsidebar"]);
+        $laconfig = SKConfigs::firstOrNew(["key" => "show_rightsidebar"]);
         $laconfig->value = "1";
         if ($laconfig->id == null) {
             $laconfig->save();
         }
-        $laconfig = LAConfigs::firstOrNew(["key" => "skin"]);
+        $laconfig = SKConfigs::firstOrNew(["key" => "skin"]);
         $laconfig->value = "skin-green";
         if ($laconfig->id == null) {
             $laconfig->save();
         }
-        $laconfig = LAConfigs::firstOrNew(["key" => "layout"]);
+        $laconfig = SKConfigs::firstOrNew(["key" => "layout"]);
         $laconfig->value = "fixed";
         if ($laconfig->id == null) {
             $laconfig->save();
         }
         // Admin Configurations
 
-        $laconfig = LAConfigs::firstOrNew(["key" => "default_email"]);
+        $laconfig = SKConfigs::firstOrNew(["key" => "default_email"]);
         $laconfig->value = "test@example.com";
         if ($laconfig->id == null) {
             $laconfig->save();
