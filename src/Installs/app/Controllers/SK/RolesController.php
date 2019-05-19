@@ -17,12 +17,14 @@ use Collective\Html\FormFacade as Form;
 use Skato\SkatoAdmin\Models\Module;
 use Skato\SkatoAdmin\Models\ModuleFields;
 use Zizaco\Entrust\EntrustFacade as Entrust;
+use Dingo\Api\Routing\Helpers;
 
 use App\Role;
 use App\Permission;
 
 class RolesController extends Controller
 {
+    use Helpers;
 	public $show_action = true;
 	public $view_col = 'name';
 	public $listing_cols = ['id', 'name', 'display_name', 'parent', 'dept'];

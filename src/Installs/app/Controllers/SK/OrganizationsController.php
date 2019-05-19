@@ -16,11 +16,13 @@ use Datatables;
 use Collective\Html\FormFacade as Form;
 use Skato\SkatoAdmin\Models\Module;
 use Skato\SkatoAdmin\Models\ModuleFields;
+use Dingo\Api\Routing\Helpers;
 
 use App\Models\Organization;
 
 class OrganizationsController extends Controller
 {
+    use Helpers;
 	public $show_action = true;
 	public $view_col = 'name';
 	public $listing_cols = ['id', 'profile_image', 'name', 'email', 'phone', 'website', 'assigned_to', 'city'];

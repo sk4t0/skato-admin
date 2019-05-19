@@ -3,7 +3,7 @@
  * Controller generated using SkatoAdmin
  * Help: http://skato-admin.com
  * SkatoAdmin is open-sourced software licensed under the MIT license.
- * Developed by: Dwij IT Solutions
+ * Developed by: Skato IT Solutions
  * Developer Website: http://skatoitsolutions.com
  */
 
@@ -19,11 +19,14 @@ use Datatables;
 use Collective\Html\FormFacade as Form;
 use Skato\SkatoAdmin\Models\Module;
 use Skato\SkatoAdmin\Models\ModuleFields;
+use Dingo\Api\Routing\Helpers;
 
 use App\Models\__model_name__;
 
 class __controller_class_name__ extends Controller
 {
+    use Helpers;
+
     public $show_action = true;
     public $view_col = '__view_column__';
     public $listing_cols = [__listing_cols__];

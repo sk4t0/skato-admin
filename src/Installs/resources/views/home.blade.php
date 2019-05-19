@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ SKConfigs::getByKey('site_description') }}">
-    <meta name="author" content="Dwij IT Solutions">
+    <meta name="author" content="Skato IT Solutions">
 
     <meta property="og:title" content="{{ SKConfigs::getByKey('sitename') }}" />
     <meta property="og:type" content="website" />
@@ -162,7 +162,7 @@
         <div class="col-lg-5">
             <h3>Contact Us</h3><br>
             <p>
-				Dwij IT Solutions,<br/>
+				Skato IT Solutions,<br/>
 				Web Development Company in Pune,<br/>
                 B4, Patang Plaza Phase 5,<br/>
                 Opp. PICT College,<br/>
@@ -198,7 +198,7 @@
 <div id="c">
     <div class="container">
         <p>
-            <strong>Copyright &copy; 2016. Powered by <a href="https://skatoitsolutions.com"><b>Dwij IT Solutions</b></a>
+            <strong>Copyright &copy; 2016. Powered by <a href="https://skatoitsolutions.com"><b>Skato IT Solutions</b></a>
         </p>
     </div>
 </div>

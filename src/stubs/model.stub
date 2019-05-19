@@ -3,7 +3,7 @@
  * Model generated using SkatoAdmin
  * Help: http://skato-admin.com
  * SkatoAdmin is open-sourced software licensed under the MIT license.
- * Developed by: Dwij IT Solutions
+ * Developed by: Skato IT Solutions
  * Developer Website: http://skatoitsolutions.com
  */
 

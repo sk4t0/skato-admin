@@ -3,7 +3,7 @@
  * Code generated using SkatoAdmin
  * Help: http://skato-admin.com
  * SkatoAdmin is open-sourced software licensed under the MIT license.
- * Developed by: Dwij IT Solutions
+ * Developed by: Skato IT Solutions
  * Developer Website: http://skatoitsolutions.com
  */
 
@@ -150,7 +150,7 @@ class SKProvider extends ServiceProvider
         
         // For LAEditor
         if(file_exists(__DIR__ . '/../../laeditor')) {
-            $this->app->make('Dwij\Laeditor\Controllers\CodeEditorController');
+            $this->app->make('Skato\Laeditor\Controllers\CodeEditorController');
         }
         
         /*
@@ -220,7 +220,7 @@ class SKProvider extends ServiceProvider
         
         // For LAEditor
         if(file_exists(__DIR__ . '/../../laeditor')) {
-            $commands[] = \Dwij\Laeditor\Commands\SKEditor::class;
+            $commands[] = \Skato\Laeditor\Commands\SKEditor::class;
         }
         
         $this->commands($commands);

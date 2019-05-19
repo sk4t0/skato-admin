@@ -70,4 +70,14 @@ Route::group(['as' => $as, 'middleware' => ['auth', 'permission:ADMIN_PANEL']], 
 	Route::get(config('skato-admin.adminRoute') . '/backup_dt_ajax', 'SK\BackupsController@dtajax');
 	Route::post(config('skato-admin.adminRoute') . '/create_backup_ajax', 'SK\BackupsController@create_backup_ajax');
 	Route::get(config('skato-admin.adminRoute') . '/downloadBackup/{id}', 'SK\BackupsController@downloadBackup');
+
+    Route::get(config('laraadmin.adminRoute') . '/file-manager', 'ElfinderControllers@showIndex');
+    Route::any(config('laraadmin.adminRoute') . '/file-manager/connector', 'ElfinderControllers@showConnector');
+    Route::get(config('laraadmin.adminRoute') . '/file-manager/popup/{input_id}', 'ElfinderControllers@showPopup');
+    Route::get(config('laraadmin.adminRoute') . '/file-manager/filepicker/{input_id}', 'ElfinderControllers@showFilePicker');
+    Route::get(config('laraadmin.adminRoute') . '/file-manager/tinymce', 'ElfinderControllers@showTinyMCE');
+    Route::get(config('laraadmin.adminRoute') . '/file-manager/tinymce4', 'ElfinderControllers@showTinyMCE4');
+    Route::get(config('laraadmin.adminRoute') . '/file-manager/ckeditor', 'ElfinderControllers@showCKeditor4');
+
+    Route::get(config('laraadmin.adminRoute') .'/notifications', 'LA\UsersController@notifications');
 });

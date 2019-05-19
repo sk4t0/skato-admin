@@ -18,12 +18,14 @@ use Skato\SkatoAdmin\Models\Module;
 use Skato\SkatoAdmin\Models\ModuleFields;
 use Skato\SkatoAdmin\Helpers\skHelper;
 use Zizaco\Entrust\EntrustFacade as Entrust;
+use Dingo\Api\Routing\Helpers;
 
 use App\Permission;
 use App\Role;
 
 class PermissionsController extends Controller
 {
+    use Helpers;
 	public $show_action = true;
 	public $view_col = 'name';
 	public $listing_cols = ['id', 'name', 'display_name'];

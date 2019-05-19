@@ -19,9 +19,12 @@ use Skato\SkatoAdmin\Models\ModuleFields;
 use Skato\SkatoAdmin\Helpers\skHelper;
 use Artisan;
 use App\Models\Backup;
+use Dingo\Api\Routing\Helpers;
+
 
 class BackupsController extends Controller
 {
+    use Helpers;
 	public $show_action = true;
 	public $view_col = 'name';
 	public $listing_cols = ['id', 'name', 'file_name'];

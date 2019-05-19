@@ -24,9 +24,11 @@ use App\Models\Employee;
 use App\Role;
 use Mail;
 use Log;
+use Dingo\Api\Routing\Helpers;
 
 class EmployeesController extends Controller
 {
+    use Helpers;
 	public $show_action = true;
 	public $view_col = 'name';
 	public $listing_cols = ['id', 'name', 'designation', 'mobile', 'email', 'dept'];

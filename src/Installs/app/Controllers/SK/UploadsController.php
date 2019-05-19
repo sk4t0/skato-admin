@@ -25,9 +25,11 @@ use Validator;
 use Datatables;
 
 use App\Models\Upload;
+use Dingo\Api\Routing\Helpers;
 
 class UploadsController extends Controller
 {
+    use Helpers;
 	public $show_action = true;
 	public $view_col = 'name';
 	public $listing_cols = ['id', 'name', 'path', 'extension', 'caption', 'user_id'];

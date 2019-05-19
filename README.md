@@ -12,7 +12,7 @@
 
 SkatoAdmin is a Open source CRM for quick-start Admin based applications with features like Advanced CRUD Generation, Schema Manager and Workflows.
 ##### Website: [skato-admin.com](http://skato-admin.com)
-##### Creator: [@gdbhosale](https://github.com/gdbhosale), [Dwij IT Solutions](https://github.com/skatoitsolutions)
+##### Creator: [@gdbhosale](https://github.com/gdbhosale), [Skato IT Solutions](https://github.com/skatoitsolutions)
 --------
 
 ### Features:
@@ -58,7 +58,7 @@ If you come across any issue/bug please [report them here](https://github.com/sk
 
 ### License
 
-SkatoAdmin is open-sourced software built by Dwij IT Solutions and contributors and licensed under the [MIT license](http://opensource.org/licenses/MIT).
+SkatoAdmin is open-sourced software built by Skato IT Solutions and contributors and licensed under the [MIT license](http://opensource.org/licenses/MIT).
 
 ### Credits:
 - Ganesh Bhosale https://github.com/gdbhosale
